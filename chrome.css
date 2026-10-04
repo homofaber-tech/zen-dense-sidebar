@@ -1,0 +1,449 @@
+/*
+ * Dense Sidebar — Zen Browser mod
+ * v2.0.3
+ * Author: homofaber-tech
+ *
+ * Density is configured per row type.
+ * A selected row size drives row height, text size and icon size together.
+ * "Standard (Zen default)" applies no override to that row type.
+ */
+
+/* -----------------------------------------------------------------
+   Derived values for each selectable row size
+   ----------------------------------------------------------------- */
+
+/* Tab rows */
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="18"]) {
+  --dense-tab-row: 18px;
+  --dense-tab-font: 8px;
+  --dense-tab-icon: 12px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="20"]) {
+  --dense-tab-row: 20px;
+  --dense-tab-font: 9px;
+  --dense-tab-icon: 13px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="22"]) {
+  --dense-tab-row: 22px;
+  --dense-tab-font: 10px;
+  --dense-tab-icon: 14px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="24"]) {
+  --dense-tab-row: 24px;
+  --dense-tab-font: 11px;
+  --dense-tab-icon: 16px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="26"]) {
+  --dense-tab-row: 26px;
+  --dense-tab-font: 12px;
+  --dense-tab-icon: 17px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="28"]) {
+  --dense-tab-row: 28px;
+  --dense-tab-font: 13px;
+  --dense-tab-icon: 18px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="30"]) {
+  --dense-tab-row: 30px;
+  --dense-tab-font: 14px;
+  --dense-tab-icon: 20px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="32"]) {
+  --dense-tab-row: 32px;
+  --dense-tab-font: 15px;
+  --dense-tab-icon: 21px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="34"]) {
+  --dense-tab-row: 34px;
+  --dense-tab-font: 16px;
+  --dense-tab-icon: 22px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-tabrow="36"]) {
+  --dense-tab-row: 36px;
+  --dense-tab-font: 17px;
+  --dense-tab-icon: 24px;
+}
+
+/* Folder rows */
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="18"]) {
+  --dense-folder-row: 18px;
+  --dense-folder-font: 8px;
+  --dense-folder-icon: 12px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="20"]) {
+  --dense-folder-row: 20px;
+  --dense-folder-font: 9px;
+  --dense-folder-icon: 13px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="22"]) {
+  --dense-folder-row: 22px;
+  --dense-folder-font: 10px;
+  --dense-folder-icon: 14px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="24"]) {
+  --dense-folder-row: 24px;
+  --dense-folder-font: 11px;
+  --dense-folder-icon: 16px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="26"]) {
+  --dense-folder-row: 26px;
+  --dense-folder-font: 12px;
+  --dense-folder-icon: 17px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="28"]) {
+  --dense-folder-row: 28px;
+  --dense-folder-font: 13px;
+  --dense-folder-icon: 18px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="30"]) {
+  --dense-folder-row: 30px;
+  --dense-folder-font: 14px;
+  --dense-folder-icon: 20px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="32"]) {
+  --dense-folder-row: 32px;
+  --dense-folder-font: 15px;
+  --dense-folder-icon: 21px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="34"]) {
+  --dense-folder-row: 34px;
+  --dense-folder-font: 16px;
+  --dense-folder-icon: 22px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-folderrow="36"]) {
+  --dense-folder-row: 36px;
+  --dense-folder-font: 17px;
+  --dense-folder-icon: 24px;
+}
+
+/* New Tab + utility/action rows */
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="18"]) {
+  --dense-action-row: 18px;
+  --dense-action-font: 8px;
+  --dense-action-icon: 12px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="20"]) {
+  --dense-action-row: 20px;
+  --dense-action-font: 9px;
+  --dense-action-icon: 13px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="22"]) {
+  --dense-action-row: 22px;
+  --dense-action-font: 10px;
+  --dense-action-icon: 14px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="24"]) {
+  --dense-action-row: 24px;
+  --dense-action-font: 11px;
+  --dense-action-icon: 16px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="26"]) {
+  --dense-action-row: 26px;
+  --dense-action-font: 12px;
+  --dense-action-icon: 17px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="28"]) {
+  --dense-action-row: 28px;
+  --dense-action-font: 13px;
+  --dense-action-icon: 18px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="30"]) {
+  --dense-action-row: 30px;
+  --dense-action-font: 14px;
+  --dense-action-icon: 20px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="32"]) {
+  --dense-action-row: 32px;
+  --dense-action-font: 15px;
+  --dense-action-icon: 21px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="34"]) {
+  --dense-action-row: 34px;
+  --dense-action-font: 16px;
+  --dense-action-icon: 22px;
+}
+:root:has(#theme-Dense-Sidebar[uc-densesidebar-actionrow="36"]) {
+  --dense-action-row: 36px;
+  --dense-action-font: 17px;
+  --dense-action-icon: 24px;
+}
+
+
+/* -----------------------------------------------------------------
+   TAB ROWS
+   ----------------------------------------------------------------- */
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) #tabbrowser-tabs {
+  --tab-min-height: var(--dense-tab-row) !important;
+  --tabstrip-min-height: var(--dense-tab-row) !important;
+  --tab-block-margin: 0px !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tabbrowser-tab,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tabbrowser-tab > .tab-stack,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tabbrowser-tab .tab-background,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tabbrowser-tab .tab-content {
+  min-height: var(--dense-tab-row) !important;
+  height: var(--dense-tab-row) !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-content {
+  padding-inline: 5px !important;
+}
+
+/* Give the tab label a little more breathing room after the favicon. */
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-label-container {
+  margin-inline-start: 2px !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-text.tab-label {
+  font-size: var(--dense-tab-font) !important;
+  line-height: var(--dense-tab-row) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-icon-stack,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-icon-image {
+  width: var(--dense-tab-icon) !important;
+  height: var(--dense-tab-icon) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-icon-stack {
+  margin-inline-end: 6px !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-tabrow="standard"])) .tab-icon-image {
+  margin-inline-end: 0 !important;
+}
+
+
+/* -----------------------------------------------------------------
+   FOLDER ROWS
+   Zen currently gives .tab-group-folder-icon its own fixed geometry,
+   so folders are sized independently from ordinary tab icons.
+   ----------------------------------------------------------------- */
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) zen-folder {
+  --tab-margin-block: 0px !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) zen-folder > .tab-group-label-container,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) .tab-group-label-container {
+  min-height: var(--dense-folder-row) !important;
+  height: var(--dense-folder-row) !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) zen-folder > .tab-group-label-container > label,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) .tab-group-label-container > label {
+  min-height: 0 !important;
+  height: 100% !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+  padding-inline-start: calc(var(--dense-folder-icon) + 8px) !important;
+  font-size: var(--dense-folder-font) !important;
+  line-height: var(--dense-folder-row) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) .tab-group-folder-icon {
+  width: var(--dense-folder-icon) !important;
+  height: var(--dense-folder-icon) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) .tab-group-folder-icon > svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-folderrow="standard"])) .tab-group-container {
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+}
+
+
+/* -----------------------------------------------------------------
+   NEW TAB + SIDEBAR UTILITY/ACTION ROWS
+   Includes the New Tab row and lower sidebar controls such as Settings
+   and Troubleshooting.
+   ----------------------------------------------------------------- */
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #tabbrowser-arrowscrollbox-periphery {
+  min-height: var(--dense-action-row) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #tabs-newtab-button,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #vertical-tabs-newtab-button,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #new-tab-button,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-create-new-button,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-sidebar-foot-buttons toolbarbutton {
+  min-height: var(--dense-action-row) !important;
+  height: var(--dense-action-row) !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
+  padding-inline: 6px !important;
+  font-size: var(--dense-action-font) !important;
+  box-sizing: border-box !important;
+  --size-item-small: var(--dense-action-icon) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #tabs-newtab-button .toolbarbutton-text,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #vertical-tabs-newtab-button .toolbarbutton-text,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #new-tab-button .toolbarbutton-text,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-create-new-button .toolbarbutton-text,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-sidebar-foot-buttons .toolbarbutton-text {
+  font-size: var(--dense-action-font) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #tabs-newtab-button .toolbarbutton-icon,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #vertical-tabs-newtab-button .toolbarbutton-icon,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #new-tab-button .toolbarbutton-icon,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-create-new-button .toolbarbutton-icon,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-create-new-button image,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-sidebar-foot-buttons .toolbarbutton-icon,
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-sidebar-foot-buttons .toolbarbutton-badge-stack > box {
+  width: var(--dense-action-icon) !important;
+  height: var(--dense-action-icon) !important;
+  min-width: var(--dense-action-icon) !important;
+  min-height: var(--dense-action-icon) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])) #zen-sidebar-foot-buttons {
+  --zen-element-separation: 0px !important;
+}
+
+/* Zen's expanded sidebar can size the create/new-tab icon via
+   --size-item-small. Override that locally as well as the image itself. */
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  :is(#tabs-newtab-button, #vertical-tabs-newtab-button, #new-tab-button, #zen-create-new-button) {
+  --size-item-small: var(--dense-action-icon) !important;
+  min-height: var(--dense-action-row) !important;
+  max-height: var(--dense-action-row) !important;
+  height: var(--dense-action-row) !important;
+  box-sizing: border-box !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  :is(#tabs-newtab-button, #vertical-tabs-newtab-button, #new-tab-button, #zen-create-new-button)
+  :is(.toolbarbutton-icon, image) {
+  width: var(--dense-action-icon) !important;
+  height: var(--dense-action-icon) !important;
+  min-width: var(--dense-action-icon) !important;
+  min-height: var(--dense-action-icon) !important;
+  padding: 0 !important;
+  margin-block: 0 !important;
+}
+
+
+/* -----------------------------------------------------------------
+   WORKSPACE HEADER
+   Uses the same density as New Tab / utility rows.
+   ----------------------------------------------------------------- */
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  .zen-current-workspace-indicator {
+  --zen-workspace-indicator-height: var(--dense-action-row) !important;
+  --size-item-small: var(--dense-action-icon) !important;
+  min-height: var(--dense-action-row) !important;
+  max-height: var(--dense-action-row) !important;
+  height: var(--dense-action-row) !important;
+  flex: 0 0 var(--dense-action-row) !important;
+  box-sizing: border-box !important;
+  padding-block: 0 !important;
+  padding-inline: 6px !important;
+  gap: 6px !important;
+  font-size: var(--dense-action-font) !important;
+}
+
+/* Zen normally draws the workspace hover/open background 8px shorter than
+   the actual row. Match the New Tab/action-row visual height instead. */
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  .zen-current-workspace-indicator::before {
+  top: 0 !important;
+  height: 100% !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  .zen-current-workspace-indicator-name {
+  font-size: var(--dense-action-font) !important;
+  line-height: var(--dense-action-row) !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  .zen-current-workspace-indicator-icon {
+  width: var(--dense-action-icon) !important;
+  height: var(--dense-action-icon) !important;
+  min-width: var(--dense-action-icon) !important;
+  min-height: var(--dense-action-icon) !important;
+  font-size: var(--dense-action-icon) !important;
+  line-height: var(--dense-action-icon) !important;
+  padding-top: 0 !important;
+  box-sizing: border-box !important;
+}
+
+:root:has(#theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"]))
+  .zen-current-workspace-indicator-icon > :is(img, svg, image) {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+/* -----------------------------------------------------------------
+   SIDEBAR URL / SEARCH ROW
+   Uses action-row density only in the normal, non-expanded URL-bar state.
+   When Zen expands/floats the URL bar for editing/search results, these
+   overrides stop applying so Zen keeps its native breakout geometry.
+   ----------------------------------------------------------------- */
+
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar-container:has(#urlbar:not([breakout-extend])) {
+  --urlbar-container-height: var(--dense-action-row) !important;
+  --urlbar-height: var(--dense-action-row) !important;
+  min-height: var(--dense-action-row) !important;
+  height: var(--dense-action-row) !important;
+}
+
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]),
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]) #urlbar-background,
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]) .urlbar-input-container {
+  min-height: var(--dense-action-row) !important;
+  height: var(--dense-action-row) !important;
+}
+
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]) #urlbar-input {
+  font-size: var(--dense-action-font) !important;
+}
+
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]) .urlbar-icon,
+:root[zen-sidebar-expanded="true"]:has(
+    #theme-Dense-Sidebar:not([uc-densesidebar-actionrow="standard"])
+  )
+  #urlbar:not([breakout-extend]) .urlbar-page-action {
+  width: var(--dense-action-icon) !important;
+  height: var(--dense-action-icon) !important;
+}
+
+/*
+ * The floating/breakout URL bar remains intentionally untouched.
+ */

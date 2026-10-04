@@ -1,0 +1,13 @@
+{
+  "dense-sidebar": {
+    "id": "dense-sidebar",
+    "name": "Dense Sidebar",
+    "description": "Set compact row sizes for Zen tabs, folders and sidebar actions.",
+    "author": "homofaber-tech",
+    "version": "2.0.3",
+    "style": "local",
+    "readme": "local",
+    "preferences": "local",
+    "enabled": true
+  }
+}
